@@ -1,0 +1,20 @@
+provider "dyn" {
+  customer_name = "${var.dyn_customer_name}"
+  username = "${var.dyn_username}"
+  password = "${var.dyn_password}"
+}
+
+resource "dyn_record" "dotmedia" {
+  count = 4
+  value = "${lookup(var.nsrecords, count.index)}"
+  name = "infectiousmedia"
+  zone = "infectious.media"
+  type = "NS"
+  ttl = "86400"
+}
+
+# resource "dyn_record" "dotmedia" {
+#   value = "google-site-verification=pHIluP6Wns2eJMQEQKGhaKoGQZkG9kuvb9IdMoooGgk"
+#   type = "TXT"
+#   ttl = "3600"
+# }
