@@ -1,9 +1,7 @@
 provider "aws" {
   region = "eu-west-1"
-}
-
-resource "aws_route53_zone" "dotmedia" {
-  name = "infectious.media"
+  access_key = "${var.aws_access_key}"
+  secret_key = "${var.aws_secret_key}"
 }
 
 resource "aws_route53_record" "media-ns" {
@@ -11,8 +9,12 @@ resource "aws_route53_record" "media-ns" {
   name = "infectious.media"
   type = "NS"
   ttl = "86400"
-  records = ["${aws_route53_zone.dotmedia.name_servers.0}", 
-        "${aws_route53_zone.dotmedia.name_servers.1}", "ns1.p05.dynect.net.", "ns2.p05.dynect.net."]     
+  records = ["${aws_route53_zone.dotmedia.name_servers.2}", 
+        "${aws_route53_zone.dotmedia.name_servers.3}", "ns1.p05.dynect.net.", "ns2.p05.dynect.net."]    
+}
+
+resource "aws_route53_record" "name" {
+  
 }
 
 resource "aws_route53_record" "media-txt" {

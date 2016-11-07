@@ -7,7 +7,7 @@ variable "aws_secret_key" {
 }
 
 variable "dyn_customer_name" {
-  default = ""
+  default = "infectiousmedia"
 }
 
 variable "dyn_username" {
@@ -18,7 +18,7 @@ variable "dyn_password" {
   default = ""
 }
 
-variable "nsrecords" {
+variable "dyn_nsrecords" {
   default = {
     "0" = "ns1.p05.dynect.net."
     "1" = "ns2.p05.dynect.net."

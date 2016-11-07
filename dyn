@@ -4,15 +4,17 @@ provider "dyn" {
   password = "${var.dyn_password}"
 }
 
-resource "dyn_record" "infectious.media" {
+resource "dyn_record" "dotmedia" {
   count = 4
-  value = "${lookup(var.nsrecords, count.index)}" 
+  value = "${lookup(var.nsrecords, count.index)}"
+  name = "infectiousmedia"
+  zone = "infectious.media"
   type = "NS"
   ttl = "86400"
 }
 
-resource "dyn_record" "infectious.media" {
-  value = "google-site-verification=pHIluP6Wns2eJMQEQKGhaKoGQZkG9kuvb9IdMoooGgk"
-  type = "TXT"
-  ttl = "3600"
-}
+# resource "dyn_record" "dotmedia" {
+#   value = "google-site-verification=pHIluP6Wns2eJMQEQKGhaKoGQZkG9kuvb9IdMoooGgk"
+#   type = "TXT"
+#   ttl = "3600"
+# }
